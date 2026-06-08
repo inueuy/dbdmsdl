@@ -36,7 +36,7 @@ public class LogActivity extends AppCompatActivity {
 
         List<String> logs = LogHelper.loadLogs(this);
         if (logs.isEmpty()) {
-            logs.add("기록이 없습니다.");
+            logs.add("No history available");
         }
 
         // RecyclerView 설정

@@ -22,6 +22,15 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        // 와이파이 설정 → WifiSettingActivity로 이동
+        TextView btnWifi = findViewById(R.id.btnWifi);
+        btnWifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MenuActivity.this, WifiSettingActivity.class));
+            }
+        });
+
         // 자동 개폐 → AutoActivity로 이동
         TextView btnAutoOpen = findViewById(R.id.btnAutoOpen);
         btnAutoOpen.setOnClickListener(new View.OnClickListener() {
