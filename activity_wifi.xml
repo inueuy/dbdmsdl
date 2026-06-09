@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
+    <!-- 뒤로가기 버튼 -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/baseline_close_24"
+        android:src="@drawable/ic_back"
         android:background="?attr/selectableItemBackgroundBorderless"
         app:tint="#111111"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,6 +19,20 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"/>
 
+    <!-- X 닫기 버튼 -->
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/baseline_close_24"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:tint="#111111"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- 타이틀 -->
     <TextView
         android:id="@+id/tvWifiTitle"
         android:layout_width="wrap_content"
@@ -32,6 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="70dp"/>
 
+    <!-- 구분선 -->
     <View
         android:id="@+id/divider0"
         android:layout_width="0dp"
@@ -44,6 +60,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"/>
 
+    <!-- Wi-Fi 정보 입력 영역 -->
     <LinearLayout
         android:id="@+id/layoutInputForm"
         android:layout_width="0dp"
@@ -55,6 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp">
 
+        <!-- 안내 문구 -->
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
@@ -65,6 +83,7 @@
             android:lineSpacingExtra="4dp"
             android:layout_marginHorizontal="24dp"/>
 
+        <!-- Wi-Fi 이름(SSID) 입력 -->
         <EditText
             android:id="@+id/etTargetSsid"
             android:layout_width="match_parent"
@@ -78,6 +97,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginHorizontal="24dp"/>
 
+        <!-- Wi-Fi 입력 구분선 -->
         <View
             android:id="@+id/lineSsid"
             android:layout_width="match_parent"
@@ -85,6 +105,7 @@
             android:background="#CCCCCC"
             android:layout_marginHorizontal="24dp"/>
 
+        <!-- Wi-Fi 비밀번호 입력 -->
         <EditText
             android:id="@+id/etTargetPassword"
             android:layout_width="match_parent"
@@ -98,6 +119,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="24dp"/>
 
+        <!-- 비밀번호 입력 구분선 -->
         <View
             android:id="@+id/linePassword"
             android:layout_width="match_parent"
@@ -107,6 +129,7 @@
 
     </LinearLayout>
 
+    <!-- 기기 연결 진행 화면 -->
     <LinearLayout
         android:id="@+id/layoutConnecting"
         android:layout_width="0dp"
@@ -119,12 +142,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="100dp">
 
+        <!-- 연결 진행 표시 -->
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:indeterminateTint="#111111"/>
 
+        <!-- 연결 상태 메시지 -->
         <TextView
             android:id="@+id/tvConnectStatus"
             android:layout_width="wrap_content"
@@ -135,6 +160,7 @@
             android:textColor="#111111"
             android:layout_marginTop="24dp"/>
 
+        <!-- 연결 대기 안내 문구 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -144,6 +170,7 @@
             android:layout_marginTop="8dp"/>
     </LinearLayout>
 
+    <!-- 하단 버튼 영역 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -151,6 +178,7 @@
         android:layout_marginBottom="40dp"
         android:layout_marginHorizontal="24dp">
 
+        <!-- Wi-Fi 연결 버튼 -->
         <Button
             android:id="@+id/btnConnectWifi"
             android:layout_width="match_parent"
@@ -163,6 +191,7 @@
             android:backgroundTint="#111111"
             android:visibility="visible"/>
 
+        <!-- 연결 취소 버튼 -->
         <Button
             android:id="@+id/btnCancelConnect"
             android:layout_width="match_parent"

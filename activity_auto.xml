@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
+    <!-- 뒤로가기 버튼 -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/baseline_close_24"
+        android:src="@drawable/ic_back"
         android:background="?attr/selectableItemBackgroundBorderless"
         app:tint="#111111"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,6 +19,20 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"/>
 
+    <!-- X 닫기 버튼 -->
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/baseline_close_24"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:tint="#111111"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- 타이틀 -->
     <TextView
         android:id="@+id/tvAutoTitle"
         android:layout_width="wrap_content"
@@ -32,6 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="70dp"/>
 
+    <!-- 구분선 -->
     <View
         android:id="@+id/divider0"
         android:layout_width="0dp"
@@ -44,6 +60,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"/>
 
+    <!-- 하위 항목 (Manual) -->
     <TextView
         android:id="@+id/tvManual"
         android:layout_width="wrap_content"
@@ -56,6 +73,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"/>
 
+    <!-- Manual 버튼 -->
     <Switch
         android:id="@+id/switchManual"
         android:layout_width="wrap_content"
@@ -67,6 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="24dp"/>
 
+    <!-- 구분선 -->
     <View
         android:id="@+id/divider1"
         android:layout_width="0dp"
@@ -79,6 +98,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"/>
 
+    <!-- 하위 항목 (Open Lid) -->
     <TextView
         android:id="@+id/tvOpenLid"
         android:layout_width="wrap_content"
@@ -91,6 +111,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"/>
 
+    <!-- Open Lid 버튼 -->
     <Switch
         android:id="@+id/switchOpenLid"
         android:layout_width="wrap_content"
@@ -103,6 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="24dp"/>
 
+    <!-- 구분선 -->
     <View
         android:id="@+id/divider2"
         android:layout_width="0dp"

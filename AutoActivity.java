@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -45,12 +46,16 @@ public class AutoActivity extends AppCompatActivity {
         // 처음 시작 시 Open Lid 글자 흐리게 비활성화 시각화
         tvOpenLidLabel.setAlpha(0.4f);
 
-        // X 버튼 누르면 뒤로가기
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        // 뒤로가기 버튼 -> 이전 화면(메뉴 화면 등)으로
+        btnBack.setOnClickListener(v -> finish());
+
+        // X 버튼 -> 첫 화면(MainActivity)으로 바로 가기
+        ImageButton btnClose = findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(v -> {
+            // 본인 액티비티 클래스명을 앞에 적어주세요 (예: AutoActivity.this)
+            Intent intent = new Intent(AutoActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         });
 
         // Manual Mode 스위치 제어 (켜야만 오픈리드 조작 가능)
@@ -78,6 +83,8 @@ public class AutoActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     sendServoCommand("servo90");
+                    // 사용자가 수동으로 열었으므로 "MANUAL" 꼬리표를 달아 로그 저장
+                    LogHelper.saveLog(buttonView.getContext(), "MANUAL", "OPEN");
                 } else {
                     sendServoCommand("servo0");
                 }

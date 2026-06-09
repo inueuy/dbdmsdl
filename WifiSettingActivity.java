@@ -72,11 +72,14 @@ public class WifiSettingActivity extends AppCompatActivity {
         tvConnectStatus = findViewById(R.id.tvConnectStatus);
 
         // 뒤로가기 버튼 → 닫기
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        btnBack.setOnClickListener(v -> finish());
+
+        // X → 첫 화면(메인)으로
+        ImageButton btnClose = findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(v -> {
+            Intent intent = new Intent(WifiSettingActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         });
 
         // CONNECT 버튼 → 기기 등록 시작
@@ -86,7 +89,7 @@ public class WifiSettingActivity extends AppCompatActivity {
                 String ssid = etTargetSsid.getText().toString().trim();
                 String password = etTargetPassword.getText().toString().trim();
 
-                // 🌟 [수정 완료] 불필요한 etEsp32Ip 입력창 연결 및 SharedPreferences 저장 로직 완전 제거!
+                // 불필요한 etEsp32Ip 입력창 연결 및 SharedPreferences 저장 로직 완전 제거!
                 if (ssid.isEmpty()) {
                     Toast.makeText(WifiSettingActivity.this, "Please enter Wi-Fi name.", Toast.LENGTH_SHORT).show();
                     return;

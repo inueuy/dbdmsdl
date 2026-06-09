@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private final String esp32Host = "smarttrashcan.local";
     private boolean isPolling = true;
 
+    // 직전 뚜껑 상태를 기억할 변수 (처음엔 닫혀있다고 가정하므로 false)
+    private boolean lastLidState = false;
+
     // 휴지통 크기에 맞게 숫자 조절 가능
     private final int EMPTY_DISTANCE = 13; // 완전히 비었을 때
     private final int FULL_DISTANCE = 3;   // 완전히 찼을 때
@@ -103,10 +106,21 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(response.toString());
                         int distance = jsonObject.getInt("distance");
 
+                        // 서버가 보낸 뚜껑 상태 파싱
+                        boolean isOpen = jsonObject.getBoolean("isOpen");
+
+                        // 이전 상태와 비교하여 '닫힘 -> 열림'으로 변하는 순간에 로그 저장
+                        // (이전 상태를 기억할 전역 변수 하나를 MainActivity에 선언해두면 좋습니다)
+                        if (isOpen && !lastLidState) {
+                            // 자동 혹은 수동 조건에 맞게 LogHelper 호출
+                            LogHelper.saveLog(MainActivity.this, "AUTO", "OPEN");
+                        }
+                        lastLidState = isOpen; // 상태 업데이트
+
                         // 거리로 퍼센트 환산 공식]
                         int percent;
                         if (distance <= 0 || distance >= EMPTY_DISTANCE) {
-                            // 거리가 0이거나(예외값), EMPTY_DISTANCE(30cm)보다 멀면 0%로 처리
+                            // 거리가 0이거나(예외값), EMPTY_DISTANCE(13cm)보다 멀면 0%로 처리
                             percent = 0;
                         } else if (distance <= FULL_DISTANCE) {
                             percent = 100;
